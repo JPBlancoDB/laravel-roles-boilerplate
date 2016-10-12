@@ -18,5 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'VerifyTypeController');
-Route::get('admin/home', 'Admin\HomeController@index');
-Route::get('client/home', 'Client\HomeController@index');
+
+Route::group(['middleware' => ['type:admin'], 'prefix' => 'admin'], function () {
+    Route::get('home', 'Admin\HomeController@index');
+});
+
+Route::group(['middleware' => ['type:client'], 'prefix' => 'client'], function () {
+    Route::get('home', 'Client\HomeController@index');
+});

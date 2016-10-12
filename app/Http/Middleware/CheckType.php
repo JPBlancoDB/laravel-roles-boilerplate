@@ -13,7 +13,7 @@ class CheckType
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $type)
     {
         if (is_null($request->user())) {
             return redirect('/');
