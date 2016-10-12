@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'VerifyTypeController');
+Route::get('admin/home', 'Admin\HomeController@index');
+Route::get('client/home', 'Client\HomeController@index');
